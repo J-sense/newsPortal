@@ -13,8 +13,10 @@ import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { IoMdClose } from "react-icons/io"
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu
 
   const toggleMenu = () => {
@@ -35,11 +37,11 @@ const Navbar = () => {
           <NavigationMenu className='flex items-center'>
             <NavigationMenuList className="flex items-center space-x-8">
               <NavigationMenuItem>
-                <NavigationMenuLink href="/" className="hover:underline">News</NavigationMenuLink>
+                <NavigationMenuLink href="/news" className={`${pathname === '/news' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>News</NavigationMenuLink>
               </NavigationMenuItem>
               
               <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger className="hover:underline">Services</NavigationMenuTrigger>
+                <NavigationMenuTrigger href="/services" className={`${pathname === '/services' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>Services</NavigationMenuTrigger>
                 <NavigationMenuContent className="absolute mt-2 p-4 bg-white shadow-lg rounded-lg">
                   <ul>
                     <li><NavigationMenuLink href="/service/webdevelopment" className="block px-4 py-2 hover:bg-gray-100">Web Development</NavigationMenuLink></li>
@@ -49,10 +51,10 @@ const Navbar = () => {
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <NavigationMenuLink href="/about" className="hover:underline">About</NavigationMenuLink>
+                <NavigationMenuLink href="/about"  className={`${pathname === '/about' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>About</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/contact" className="hover:underline">Contact</NavigationMenuLink>
+                <NavigationMenuLink href="/contact"  className={`${pathname === '/contact' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>Contact</NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
