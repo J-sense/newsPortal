@@ -17,10 +17,10 @@ import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
   const pathname = usePathname()
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false) // State to manage mobile menu
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle menu open/close
+    setIsMenuOpen(!isMenuOpen) // Toggle menu open/close
   }
 
   return (
@@ -37,24 +37,38 @@ const Navbar = () => {
           <NavigationMenu className='flex items-center'>
             <NavigationMenuList className="flex items-center space-x-8">
               <NavigationMenuItem>
-                <NavigationMenuLink href="/news" className={`${pathname === '/news' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>News</NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/news" className={`${pathname === '/news' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underline`}>News</Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               
               <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger href="/services" className={`${pathname === '/services' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>Services</NavigationMenuTrigger>
+                <NavigationMenuTrigger className={`${pathname === '/services' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underline`}>Services</NavigationMenuTrigger>
                 <NavigationMenuContent className="absolute mt-2 p-4 bg-white shadow-lg rounded-lg">
                   <ul>
-                    <li><NavigationMenuLink href="/service/webdevelopment" className="block px-4 py-2 hover:bg-gray-100">Web Development</NavigationMenuLink></li>
-                    <li><NavigationMenuLink href="/service/appdevelopment" className="block px-4 py-2 hover:bg-gray-100">App Development</NavigationMenuLink></li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/service/webdevelopment" className="block px-4 py-2 hover:bg-gray-100">Web Development</Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/service/appdevelopment" className="block px-4 py-2 hover:bg-gray-100">App Development</Link>
+                      </NavigationMenuLink>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <NavigationMenuLink href="/about"  className={`${pathname === '/about' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>About</NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/about" className={`${pathname === '/about' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underline`}>About</Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/contact"  className={`${pathname === '/contact' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underlin`}>Contact</NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="/contact" className={`${pathname === '/contact' ? 'text-red-500 font-bold' : 'text-gray-500'} hover:underline`}>Contact</Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -83,13 +97,19 @@ const Navbar = () => {
             <NavigationMenu>
               <NavigationMenuList className="flex flex-col items-center space-y-4">
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="/" className="hover:underline">News</NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link href="/news" className="hover:underline">News</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="/about" className="hover:underline">About</NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link href="/about" className="hover:underline">About</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="/contact" className="hover:underline">Contact</NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link href="/contact" className="hover:underline">Contact</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
