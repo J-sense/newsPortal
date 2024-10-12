@@ -5,6 +5,7 @@ import Image from 'next/image'
 // import { error } from 'console'
 import React, { useEffect, useState } from 'react'
 import Categorylist from './Categorylist'
+import Searchlist from './Searchlist'
 
 const Newslist = () => {
   const[news,setNews] = useState<Newsitem[]>([])
@@ -34,7 +35,11 @@ const Newslist = () => {
   console.log(news)
   return (
     <div className='py-3'>
-      <Categorylist onChangecategory={category}/>
+      <div className='flex'>
+        <Searchlist onsearch={setSearch}/>
+      <Categorylist onChangecategory={setCategory} />
+
+      </div>
     <div className="grid md:grid-cols-3 gap-3">
        {
             news.map((allnews,idx)=>(

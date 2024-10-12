@@ -7,7 +7,7 @@ const Categorylist = ({onChangecategory}:categoryprops) => {
     const categories =["all","general","tech","tech","health"]
   return (
     <div className='flex flex-shrink gap-3 bold text-slate-900 items-center mb-3'><h3 className='font-bold text-slate-900'>Fillter by category :</h3>
-       <Select>
+       <Select onValueChange={(value)=>onChangecategory(value ==="all" ? "" : value)}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a category" />
       </SelectTrigger>
@@ -17,7 +17,7 @@ const Categorylist = ({onChangecategory}:categoryprops) => {
           {
             categories.map((category:string,idx:any)=>(
                 <div key={idx}>
-                      <SelectItem value={category}>{category}</SelectItem>
+                      <SelectItem value={category} >{category}</SelectItem>
                 </div>
             ))
           }
