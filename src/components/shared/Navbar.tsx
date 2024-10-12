@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { IoMdClose } from "react-icons/io"
 import { usePathname } from 'next/navigation'
+import { ThemeContext } from '@/app/context/Themecontext'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -22,7 +23,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen) // Toggle menu open/close
   }
-
+const {isdark,toggletheme}:any = useContext(ThemeContext)
   return (
     <header className='py-4 shadow-md'>
       <nav className='flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -76,7 +77,7 @@ const Navbar = () => {
 
         {/* Switch, Button and Hamburger Menu for Small Screens */}
         <div className="flex-1 flex justify-end items-center gap-3">
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3" onClick={toggleMenu}>
             <Switch />
             <Button variant="outline" className='bg-black text-white'>Login</Button>
           </div>

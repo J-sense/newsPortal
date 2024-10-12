@@ -11,7 +11,9 @@ body {
     text-wrap: balance;
   }
 }
-
+.dark{
+  @apply bg-slate-950 text-white;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
